@@ -46,9 +46,8 @@ namespace Client
          : m_isInitialized(true),
            m_operationsProcessed(0)
         {
-            AwsServiceClientT* pThis = static_cast<AwsServiceClientT*>(this);
             Aws::Utils::ComponentRegistry::RegisterComponent(AwsServiceClientT::GetServiceName(),
-                                                             pThis,
+                                                             this,
                                                              &AwsServiceClientT::ShutdownSdkClient);
 
         }
@@ -57,9 +56,8 @@ namespace Client
          : m_isInitialized(other.m_isInitialized.load()),
            m_operationsProcessed(0)
         {
-            AwsServiceClientT* pThis = static_cast<AwsServiceClientT*>(this);
             Aws::Utils::ComponentRegistry::RegisterComponent(AwsServiceClientT::GetServiceName(),
-                                                             pThis,
+                                                             this,
                                                              &AwsServiceClientT::ShutdownSdkClient);
         }
 
