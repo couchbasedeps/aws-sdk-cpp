@@ -46,8 +46,9 @@ namespace Client
          : m_isInitialized(true),
            m_operationsProcessed(0)
         {
+            AwsServiceClientT* pThis = static_cast<AwsServiceClientT*>(this);
             Aws::Utils::ComponentRegistry::RegisterComponent(AwsServiceClientT::GetServiceName(),
-                                                             this,
+                                                             pThis,
                                                              &AwsServiceClientT::ShutdownSdkClient);
 
         }
@@ -56,8 +57,9 @@ namespace Client
          : m_isInitialized(other.m_isInitialized.load()),
            m_operationsProcessed(0)
         {
+            AwsServiceClientT* pThis = static_cast<AwsServiceClientT*>(this);
             Aws::Utils::ComponentRegistry::RegisterComponent(AwsServiceClientT::GetServiceName(),
-                                                             this,
+                                                             pThis,
                                                              &AwsServiceClientT::ShutdownSdkClient);
         }
 
@@ -85,7 +87,8 @@ namespace Client
          */
         static void ShutdownSdkClient(void* pThis, int64_t timeoutMs = -1)
         {
-            AwsServiceClientT* pClient = reinterpret_cast<AwsServiceClientT*>(pThis);
+            AwsServiceClientT* pClient = static_cast<AwsServiceClientT*>(
+                reinterpret_cast<ClientWithAsyncTemplateMethods<AwsServiceClientT> *>(pThis));
             AWS_CHECK_PTR(AwsServiceClientT::GetServiceName(), pClient);
             if(!pClient->m_isInitialized)
             {
