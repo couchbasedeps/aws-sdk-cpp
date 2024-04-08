@@ -85,8 +85,8 @@ namespace Client
          */
         static void ShutdownSdkClient(void* pThis, int64_t timeoutMs = -1)
         {
-            AwsServiceClientT* pClient = dynamic_cast<AwsServiceClientT*>(
-                static_cast<ClientWithAsyncTemplateMethods<AwsServiceClientT> *>(pThis));
+            AwsServiceClientT* pClient = static_cast<AwsServiceClientT*>(
+                reinterpret_cast<ClientWithAsyncTemplateMethods<AwsServiceClientT> *>(pThis));
             AWS_CHECK_PTR(AwsServiceClientT::GetServiceName(), pClient);
             if(!pClient->m_isInitialized)
             {
