@@ -73,8 +73,7 @@ namespace Client
 
         virtual ~ClientWithAsyncTemplateMethods()
         {
-            AwsServiceClientT* pClient = static_cast<AwsServiceClientT*>(this);
-            Aws::Utils::ComponentRegistry::DeRegisterComponent(pClient);
+            Aws::Utils::ComponentRegistry::DeRegisterComponent(this);
         }
 
         /**
