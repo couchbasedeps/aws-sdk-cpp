@@ -5220,9 +5220,15 @@
           "locationName":"x-amz-checksum-mode"
         },
         "Notes":{
-          "type":"string"
+          "shape":"Notes",
+          "documentation":"<p>Notes.</p>",
+          "location":"header",
+          "locationName":"x-amz-checksum-mode"
         }
       }
+    },
+    "Notes":{
+      "type":"string"
     },
     "GetObjectResponseStatusCode":{
       "type":"integer",
