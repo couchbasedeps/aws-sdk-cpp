@@ -597,7 +597,7 @@ HttpResponseOutcome AWSClient::AttemptOneRequest(const std::shared_ptr<Aws::Http
 HttpResponseOutcome AWSClient::AttemptOneRequest(const std::shared_ptr<Aws::Http::HttpRequest>& httpRequest,
     const char* signerName, const char* requestName, const char* signerRegionOverride, const char* signerServiceNameOverride) const
 {
-    static_assert(false,"test error");
+    //static_assert(false,"test error");
     AWS_UNREFERENCED_PARAM(requestName);
 
     auto signer = GetSignerByName(signerName);

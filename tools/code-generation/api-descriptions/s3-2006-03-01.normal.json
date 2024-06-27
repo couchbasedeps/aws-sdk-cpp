@@ -5218,6 +5218,9 @@
           "documentation":"<p>To retrieve the checksum, this mode must be enabled.</p>",
           "location":"header",
           "locationName":"x-amz-checksum-mode"
+        },
+        "Notes":{
+          "type":"string"
         }
       }
     },
